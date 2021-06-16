@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thararam</title>
+    <link rel="stylesheet" href="./player.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body {
+        min-height: 100vh;
+        background-image: linear-gradient(
+          0deg,
+          rgb(247, 247, 247) 23.8%,
+          rgb(252, 221, 221) 92%
+        );
+      }
+      .header {
+        display: flex;
+        position: fixed;
+        background-image: linear-gradient(
+          0deg,
+          rgb(247, 247, 247) 23.8%,
+          rgb(252, 221, 221) 92%
+        );
+        width: 100%;
+        top: 0;
+        align-items: center;
+        z-index: 1;
+        justify-content: space-between;
+        border-bottom: solid #333 1px;
+      }
+      .head1 {
+        display: flex;
+      }
+      .header ul {
+        list-style-type: none;
+        display: flex;
+        align-items: center;
+      }
+      .header {
+        list-style-type: none;
+        display: flex;
+      }
+      .header a {
+        text-decoration: none;
+        padding: 0.5rem;
+        color: #333;
+      }
+      .header h1 {
+        font-size: 1.5rem;
+        padding: 1rem;
+      }
+      .header .active {
+        border-bottom: solid rgb(144, 0, 24) 1px;
+      }
+      [type="search"] {
+        min-width: 400px;
+        border-radius: 5px;
+        text-align: center;
+        padding: 0.5rem;
+      }
+      /* content */
+      .content-container {
+        margin-top: 10px;
+        position: relative;
+        top: 75px;
+        display: grid;
+        grid-template-columns: 1fr 6fr;
+      }
+      .side-nav {
+        display: flex;
+        flex-direction: column;
+      }
+      .side-nav ul {
+        padding-left: 1rem;
+        list-style-type: none;
+      }
+      .side-nav p {
+        font-weight: bolder;
+        font-size: 1.1rem;
+        color: #333;
+        padding-left: 0.2rem;
+        padding-bottom: 0.3rem;
+      }
+      .side-nav ul li {
+        padding: 0.3rem;
+      }
+
+      .side-nav-nav {
+        position: fixed;
+        left: 0;
+      }
+
+      .side-nav ul a {
+        text-decoration: none;
+        color: black;
+      }
+      .side-nav button {
+        padding: 0.5em;
+        border-radius: 10px;
+        background-color: transparent;
+        border: tomato 1px solid;
+        font-size: 1.1rem;
+        margin-left: 10px;
+      }
+
+      .albums {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+        row-gap: 20px;
+        column-gap: 20px;
+      }
+      .album {
+        background-color: #fff;
+        border-radius: 0px 5px 5px 0px;
+        cursor: pointer;
+      }
+      .album .img {
+        position: relative;
+        cursor: pointer;
+      }
+
+      .album img {
+        width: 100%;
+      }
+      .album h3,
+      p {
+        padding: 2px;
+        text-align: center;
+        font-size: 1.4rem;
+      }
+
+      .album:hover img {
+        filter: brightness(50%);
+      }
+
+      .album:hover .hover-play {
+        display: block;
+      }
+
+      .hover-play {
+        padding: 25px;
+        font-size: 2rem;
+        position: absolute;
+        top: 50%;
+        color: white;
+        background-color: black;
+        display: none;
+        left: 50%;
+        cursor: pointer;
+        transform: translate(-50%, -50%);
+        border-radius: 50px;
+        transition: all ease-in 0.1s;
+      }
+      .hover-play:hover {
+        padding: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="header">
+        <div class="head1">
+          <h1>Thararam</h1>
+          <ul>
+            <li><a href="#" class="active">Home</a></li>
+            <li><a href="#">Browse</a></li>
+            <li><a href="#">Upgrade</a></li>
+          </ul>
+        </div>
+        <input type="search" placeholder="&#128269; search" />
+        <div>
+          <label for="language">Music Languages</label>
+          <select name="language" id="language">
+            <option value="telugu">Telugu</option>
+            <option value="telugu">Hindi</option>
+            <option value="telugu">English</option>
+            <option value="telugu">Tamil</option>
+          </select>
+          <a href="#">Log in</a>
+          <a href="#">Sign up</a>
+        </div>
+      </div>
+      <main>
+        <div class="content-container">
+          <div class="side-nav">
+            <div class="side-nav-nav">
+              <p>LIBRARY</p>
+              <ul>
+                <li>
+                  <a href="#"><i class="fas fa-history"></i> History</a>
+                </li>
+                <li>
+                  <a href="#"><i class="fas fa-music"></i> Songs</a>
+                </li>
+                <li>
+                  <a href="#"><i class="fas fa-compact-disc"></i> Albums</a>
+                </li>
+                <li>
+                  <a href="#"><i class="fas fa-podcast"></i> Podcasts</a>
+                </li>
+                <li>
+                  <a href="#"><i class="fas fa-street-view"></i> Artists</a>
+                </li>
+              </ul>
+              <button>+ New Playlist</button>
+            </div>
+          </div>
+          <div class="albums-container">
+            <div class="trending-now-albums albums">
+              <div class="album">
+                <div class="img">
+                  <img
+                    src="./images/geralt_sword-size.png"
+                    alt="Geralt with sword"
+                  />
+                  <button onclick="playState()">
+                    <i class="fas fa-play hover-play"></i>
+                  </button>
+                </div>
+                <h3>Cloak and Dagger</h3>
+                <p>Marcin</p>
+              </div>
+            </div>
+
+            <div class="top-charts-albums albums"></div>
+            <div class="new-releases-albums albums"></div>
+            <div class="editorial-picks-albums albums"></div>
+            <div class="stations-radio albums"></div>
+            <div class="artists-radio albums"></div>
+          </div>
+        </div>
+      </main>
+      <div class="player">
+        <div class="music-container">
+          <div class="music-info">
+            <h4 id="title">Lady of the Lake</h4>
+            <div class="progress-container">
+              <div class="progress"></div>
+            </div>
+          </div>
+          <audio src="./songs/cloak_and_dagger.mp3" id="audio"></audio>
+          <div class="img-container">
+            <img
+              src="./images/geralt_sword-size.png"
+              alt="music-cover"
+              id="cover"
+            />
+          </div>
+          <div class="navigation">
+            <button id="prev" class="action-btn">
+              <i class="fas fa-backward"></i>
+            </button>
+            <button id="play" class="action-btn action-btn-big">
+              <i class="fas fa-play"></i>
+            </button>
+            <button id="next" class="action-btn">
+              <i class="fas fa-forward"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+    <script src="./fillAlbums.js"></script>
+    <script src="./player.js"></script>
+  </body>
+</html>
